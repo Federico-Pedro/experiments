@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      body {
+        background-color: #666;
+        color:aliceblue;
+        font-size: 20px;
+        
+      }
+      input {
+        height: 20px;
+      }
+      span {
+        font-size: 25px;
+        font-weight:500;
+      }
+      
+      button {
+        border: none;
+        border-radius: 10px;
+        width: 100px;
+        height: 30px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      li {
+        margin-bottom: 10px;
+        list-style: none;
+        color: #ffdf5e;
+      }
+
+      li button {
+        font-size: 14px;
+        margin-left: 20px;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id ="button">Add item</button>
+    </div>
+
+    <ul id="ul">
+
+    </ul>
+
+    <script>
+      let ul = document.getElementById('ul');
+      let input = document.getElementById('item');
+      let btn = document.getElementById('button');
+      
+      btn.addEventListener('click', ()=> {
+        let val = input.value;
+        input.value = '';
+        let li = document.createElement("li");
+        let butt = document.createElement("button");
+        let spn = document.createElement("span");
+        li.append(spn);
+        li.append(butt);
+        spn.innerText = val;
+        butt.innerText = 'Delete';
+        ul.append(li);
+        butt.addEventListener('click', ()=> {
+          li.remove();
+        })
+        document.getElementById('item').focus();
+      })
+    </script>
+  </body>
+</html>
